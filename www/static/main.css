@@ -1,0 +1,84 @@
+@font-face {
+	font-family: "Mono MMM 5";
+	src: url("font/monoMMM_5.ttf");
+}
+
+body, html {
+	height: 100%
+}
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin: 0;
+	background-color: black;
+	transition-duration: 2000ms;
+}
+body.color-invert {
+	background-color: #f2f2f2;
+}
+#samaritan {
+	text-align: center;
+	padding-top: 150px;
+}
+#samaritan .text {
+	margin: 0 auto;
+	font-family: 'Mono MMM 5', 'Nova Mono';
+	font-size: 23px;
+	text-transform: uppercase;
+	color: white;
+	white-space: nowrap;
+}
+#samaritan .text.hidden {
+	visibility: hidden;
+}
+.color-invert #samaritan .text {
+	color: black;
+}
+#samaritan .line {
+	margin: 0 auto;
+	width: 30px;
+	border-bottom: 2px solid white;
+	transition-duration: 200ms;
+}
+.color-invert #samaritan .line {
+	border-bottom-color: black;
+}
+#samaritan .arrow {
+	display: inline-block;
+	border-bottom: 10px solid transparent;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+}
+#samaritan .arrow-animation {
+	border-bottom: 10px solid #330000;
+	-webkit-animation: samaritan-arrow-animation 1000ms alternate infinite linear;
+	animation: samaritan-arrow-animation 1000ms alternate infinite linear;
+}
+@-webkit-keyframes samaritan-arrow-animation {
+	from { border-bottom-color: #330000; }
+	to { border-bottom-color: #cc0000; }
+}
+@keyframes samaritan-arrow-animation {
+	from { border-bottom-color: #330000; }
+	to { border-bottom-color: #cc0000; }
+}
+
+#info, #subtitle {
+	font-family: 'Mono MMM 5', 'Nova Mono';
+	font-size: 15px;
+	text-align: center;
+}
+#info {
+	transition-duration: 1000ms;
+}
+#info a {
+	color: #428bca;
+	text-decoration: none;
+}
+#info a:hover, #info a:focus {
+	color: #2a6496;
+	text-decoration: underline;
+}
+#subtitle {
+	font-style: italic;
+	transition-duration: 200ms;
+}
