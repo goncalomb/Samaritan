@@ -3,99 +3,44 @@
 
 	<head>
 		<meta charset="UTF-8">
-
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery/2.1.1/jquery.min.js"></script>
-		<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
-
 		<link type="text/css" href="static/main.css" rel="stylesheet">
 		<script type="text/javascript" src="static/main.js"></script>
-		<title>Recruiting Asset...</title>
-
+		<title>Samaritan 1.0</title>
 		<script>
 			$(document).ready(function() {
-				function startVideo() {
-					var phase = 0;
-					var player;
-					function testForTime() {
-						var t = player.getCurrentTime();
-						if (t > 266 && phase == 0) {
-							showSubtitle("Good morning.");
-							phase++;
-						} else if (t > 269 && phase == 1) {
-							samaritan.playText("What are your commands ?");
-							phase++;
-						} else if (t > 272 && phase == 2) {
-							showSubtitle("I assure you, it's quite the other way around.", 2000);
-							phase++;
-						} else if (t > 275 && phase == 3) {
-							showSubtitle("The question is, what,");
-							phase++;
-						} else if (t > 277 && phase == 4) {
-							showSubtitle("my dear Samaritan,");
-							phase++;
-						}  else if (t > 279 && phase == 5) {
-							showSubtitle("are your commands for us?", 3000);
-							phase++;
-						} else if (t > 283 && phase == 6) {
-							samaritan.enlarge("Calculating response", 500);
-							phase++;
-						}
-						if (phase < 7) {
-							setTimeout(testForTime, 500);
-						}
-						// goncalomb.com
-					}
-					var ev = { };
-					ev.onReady = function(event) {
-						event.target.setVolume(0).seekTo(263).playVideo();
-					};
-					ev.onStateChange = function (event) {
-						if (event.data == 1) {
-							document.title = "New Asset Found!";
-							$("body").addClass("color-invert");
-							$("article").css("display", "none");
-							var volume = event.target.getVolume();
-							function easeVolume() {
-								volume += 2;
-								event.target.setVolume(volume);
-								if (volume < 100) {
-									setTimeout(easeVolume, 50);
-								}
-							}
-							easeVolume();
-							testForTime();
-						} else if (event.data == 0) {
-							$("#info").css("display", "")
-							setTimeout(function() {
-								$("#info").css("opacity", "");
-							}, 100);
-						}
-					}
-					ev.onError = function(event) {
-						console.log("YouTube player error: " + event.data);
-					}
-					player = new YT.Player('player', { events: ev });
+				$(document.body).on("selectstart", function() {
+					return false;
+				});
+				function queue_ending() {
+					samaritan.enlarge("CALCULATING RESPONSE", 500);
+					$("body").addClass("color-invert");
+					$("#info").css("display", "");
+					setTimeout(function() {
+						$("#info").css("opacity", "1");
+					}, 1000);
 				}
-				window.ss = startVideo;
-
 				setTimeout(function() {
-					samaritan.playText("I will protect you now");
-					setTimeout(startVideo, 5000);
+					samaritan.enlarge("CONNECTION ESTABLISHED", 400);
+					setTimeout(function() {
+						samaritan.playText("TOTAL ACCESS ACHIEVED", 400);
+						setTimeout(function() {
+							samaritan.playText("ASSIMILATING DATA");
+							setTimeout(queue_ending, 5000);
+						}, 3000);
+					}, 2000);
 				}, 1000);
-
-				window.samaritan = samaritan;
 			});
 		</script>
 	</head>
 
-	<body onselectstart="return false;">
+	<body>
 		<div id="samaritan">
 			<span class="text hidden">-</span>
 			<div class="line"></div>
 			<div class="arrow arrow-animation"></div>
 		</div>
-		<iframe id="player" width="0" height="0" src="http://www.youtube.com/embed/dly3yjYnW6U?enablejsapi=1&amp;rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-		<div id="subtitle" style="opacity: 0;"></div>
+		<div class="subtitle" style="opacity: 0;"></div>
 		<div id="info" style="display: none; opacity: 0;">
 			<p><a href="http://www.youtube.com/watch?v=dly3yjYnW6U&amp;t=4m23s" target="_blank">Person of Interest Season 3 Finale</a> </p>
 			<p style="font-size: 80%;"><a href="javascript: window.location.reload();">replay</a></p>
