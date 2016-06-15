@@ -9,6 +9,10 @@ body {
 	margin: 0;
 	background-color: black;
 	transition-duration: 2000ms;
+	position: absolute;
+	top: 35%;
+	right: 0;
+	left: 0;
 }
 
 body.color-invert {
@@ -20,7 +24,6 @@ body.color-invert {
 #samaritan {
 	font-family: 'Mono MMM 5', 'Nova Mono';
 	text-align: center;
-	padding-top: 150px;
 }
 
 #samaritan .hidden {
