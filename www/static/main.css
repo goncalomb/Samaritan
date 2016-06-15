@@ -3,50 +3,81 @@
 	src: url("font/monoMMM_5.ttf");
 }
 
-body, html {
-	height: 100%
-}
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	overflow-y: scroll;
 	margin: 0;
 	background-color: black;
 	transition-duration: 2000ms;
 }
+
 body.color-invert {
 	background-color: #f2f2f2;
 }
+
+/* samaritan */
+
 #samaritan {
+	font-family: 'Mono MMM 5', 'Nova Mono';
 	text-align: center;
 	padding-top: 150px;
 }
+
+#samaritan .hidden {
+	opacity: 0;
+}
+
 #samaritan .text {
+	display: none;
 	margin: 0 auto;
-	font-family: 'Mono MMM 5', 'Nova Mono';
 	font-size: 23px;
-	text-transform: uppercase;
+	line-height: 23px;
+	min-height: 23px;
 	color: white;
 	white-space: nowrap;
 }
-#samaritan .text.hidden {
-	visibility: hidden;
+#samaritan .text::after {
+	content: "";
 }
-.color-invert #samaritan .text {
+
+.color-invert #samaritan.mode-text .text {
 	color: black;
 }
+#samaritan.mode-text .text {
+	display: inline-block;
+}
+#samaritan.mode-text-black .text {
+	display: inline-block;
+	background-color: black;
+	color: white;
+	letter-spacing: 8px;
+	padding: 5px 0px 5px 10px;
+	border-radius: 2px;
+	transition-duration: 200ms;
+}
+
 #samaritan .line {
+	display: none;
 	margin: 0 auto;
 	width: 30px;
 	border-bottom: 2px solid white;
 	transition-duration: 200ms;
 }
-.color-invert #samaritan .line {
+.color-invert #samaritan.mode-text .line {
 	border-bottom-color: black;
 }
+#samaritan.mode-text .line {
+	display: block;
+}
+
 #samaritan .arrow {
-	display: inline-block;
+	display: none;
 	border-bottom: 10px solid transparent;
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
+}
+#samaritan.mode-text .arrow {
+	display: inline-block;
 }
 #samaritan .arrow-animation {
 	border-bottom: 10px solid #330000;
@@ -61,6 +92,53 @@ body.color-invert {
 	from { border-bottom-color: #330000; }
 	to { border-bottom-color: #cc0000; }
 }
+
+#samaritan .message-box {
+	display: none;
+	text-align: left;
+	margin: 0 auto;
+	width: 500px;
+	transition-duration: 500ms;
+}
+#samaritan.mode-message-box .message-box {
+	display: block;
+}
+#samaritan .message-box .message-box-title {
+	font-size: 18px;
+	color: black;
+	background-color: white;
+	border: 2px solid black;
+	padding: 2px 15px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+#samaritan .message-box .message-box-text {
+	font-size: 16px;
+	color: white;
+	background-color: black;
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
+	padding: 5px 15px;
+	min-height: 45px;
+}
+#samaritan .message-box .message-box-footer {
+	height: 15px;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+#samaritan .fast-flash {
+	animation: fast-flash 300ms linear infinite;
+}
+@keyframes fast-flash {
+	0% { opacity: 1; }
+	49% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+/* other */
 
 #info, #subtitle {
 	font-family: 'Mono MMM 5', 'Nova Mono';

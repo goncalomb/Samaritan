@@ -13,32 +13,44 @@
 					return false;
 				});
 				function queue_ending() {
-					samaritan.enlarge("CALCULATING RESPONSE", 500);
-					$("body").addClass("color-invert");
+					setTimeout(function() {
+						samaritan.textAnimate("WHAT ARE YOUR COMMANDS ?")
+					}, 3000);
+					setTimeout(function() {
+						samaritan.enlarge("CALCULATING RESPONSE");
+					}, 8000);
 					$("#info").css("display", "");
 					setTimeout(function() {
 						$("#info").css("opacity", "1");
-					}, 1000);
+					}, 10000);
 				}
 				setTimeout(function() {
-					samaritan.enlarge("CONNECTION ESTABLISHED", 400);
+					samaritan.textBlack("CONNECTION ESTABLISHED");
 					setTimeout(function() {
-						samaritan.playText("TOTAL ACCESS ACHIEVED", 400);
+						samaritan.showMessageBox("TOTAL ACCESS ACHIEVED");
 						setTimeout(function() {
-							samaritan.playText("ASSIMILATING DATA");
-							setTimeout(queue_ending, 5000);
-						}, 3000);
-					}, 2000);
-				}, 1000);
+							samaritan.showMessageBox("TOTAL ACCESS ACHIEVED", "ASSIMILATING DATA");
+						}, 500);
+						setTimeout(function() {
+							samaritan.hideMessageBox();
+							queue_ending();
+						}, 8000);
+					}, 3000);
+				}, 2000);
 			});
 		</script>
 	</head>
 
-	<body>
-		<div id="samaritan">
-			<span class="text hidden">-</span>
+	<body class="color-invert">
+		<div id="samaritan" class="mode-text">
+			<div class="text hidden">-</div>
 			<div class="line"></div>
 			<div class="arrow arrow-animation"></div>
+			<div class="message-box">
+				<div class="message-box-title"></div>
+				<div class="message-box-text"></div>
+				<div class="message-box-footer"></div>
+			</div>
 		</div>
 		<div class="subtitle" style="opacity: 0;"></div>
 		<div id="info" style="display: none; opacity: 0;">
