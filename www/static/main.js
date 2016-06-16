@@ -121,15 +121,42 @@ $(document).ready(function() {
 		audio.play();
 	}
 
+	window.tryPlayAudio = function(audio, time, fadein_time) {
+		function doPlayAudio() {
+			audioStart(audio, time, fadein_time);
+			setTimeout(function() {
+				if (audio.paused) {
+					// mobile browser? we need user interaction
+					$(document).click(function fn() {
+						$(this).off("click", fn);
+						showSubtitle(null);
+						audio.play();
+					});
+					showSubtitle("(tap the screen)", -1);
+				}
+			}, 100);
+		}
+		if (audio.readyState == 4) {
+			doPlayAudio()
+		} else {
+			$(audio).on("canplay", function fn() {
+				$(this).off("canplay", fn);
+				doPlayAudio();
+			});
+		}
+	}
+
 	window.showSubtitle = function(text, time) {
 		var $subtitle = $("#subtitle");
 		if (!text) {
 			$subtitle.css("opacity", "0")
-		} else {
-			$subtitle.text("\"" + text + "\"");
-			$subtitle.css("opacity", "");
+			return;
+		}
+		$subtitle.text("\"" + text + "\"");
+		$subtitle.css("opacity", "");
+		if (!time || time >= 0) {
 			setTimeout(function() {
-				showSubtitle("");
+				showSubtitle(null);
 			}, time || 1500);
 		}
 	}

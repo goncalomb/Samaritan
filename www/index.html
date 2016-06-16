@@ -30,7 +30,7 @@
 					"15": [samaritan, "showMessageBox", ["TOTAL ACCESS ACHIEVED", "ASSIMILATING DATA"]],
 					"24": [samaritan, "showMessageBox", ["TOTAL ACCESS ACHIEVED", "DATA ACQUISITION"]],
 					"25": function() {
-						audioStart(audio1, 0, 5);
+						tryPlayAudio(audio1, 0, 5);
 					}
 				});
 				audioSetTimeEvents(audio1, {
@@ -49,7 +49,7 @@
 						}, 100);
 					}
 				});
-				audioStart(audio0, 0, 5);
+				tryPlayAudio(audio0, 0, 5);
 
 				setTimeout(function() {
 					samaritan.textBlack("CONNECTION ESTABLISHED");
