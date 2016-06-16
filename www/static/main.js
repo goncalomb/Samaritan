@@ -86,8 +86,43 @@ $(document).ready(function() {
 
 	// other
 
-	function showSubtitle(text, time) {
-		$subtitle = $("#subtitle");
+	window.audioSetTimeEvents = function(audio, events) {
+		$(audio).on("timeupdate", function() {
+			for (var key in events) {
+				if (this.currentTime > key) {
+					if (typeof events[key] === "function") {
+						events[key]();
+					} else {
+						var obj = (events[key][0] || window);
+						obj[events[key][1]].apply(obj, events[key][2]);
+					}
+					delete events[key];
+				}
+			}
+		});
+	}
+
+	window.audioStart = function(audio, time, fadein_time) {
+		audio.currentTime = time;
+		if (fadein_time) {
+			audio.volume = 0;
+			$(audio).on("timeupdate", function fn() {
+				var dt = this.currentTime - time;
+				if (dt < fadein_time) {
+					this.volume = dt/fadein_time;
+				} else {
+					this.volume = 1;
+					$(audio).off("timeupdate", fn);
+				}
+			});
+		} else {
+			audio.volume = 1;
+		}
+		audio.play();
+	}
+
+	window.showSubtitle = function(text, time) {
+		var $subtitle = $("#subtitle");
 		if (!text) {
 			$subtitle.css("opacity", "0")
 		} else {
@@ -95,7 +130,7 @@ $(document).ready(function() {
 			$subtitle.css("opacity", "");
 			setTimeout(function() {
 				showSubtitle("");
-			}, time | 1500);
+			}, time || 1500);
 		}
 	}
 

@@ -7,37 +7,53 @@
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery/2.1.1/jquery.min.js"></script>
 		<link type="text/css" href="static/main.css" rel="stylesheet">
 		<script type="text/javascript" src="static/main.js"></script>
-		<title>Samaritan 1.0</title>
+		<title>Samaritan Beta</title>
 		<script>
 			$(document).ready(function() {
 				$(document.body).on("selectstart", function() {
 					return false;
 				});
-				function queue_ending() {
-					setTimeout(function() {
-						samaritan.textAnimate("WHAT ARE YOUR COMMANDS ?")
-					}, 3000);
-					setTimeout(function() {
-						samaritan.enlarge("CALCULATING RESPONSE");
-					}, 8000);
-					$("#info").css("display", "");
-					setTimeout(function() {
-						$("#info").css("opacity", "1");
-					}, 10000);
-				}
+
+				var audio0 = $("audio[src=\"static/audio/audio0.ogg\"]")[0];
+				var audio1 = $("audio[src=\"static/audio/audio1.ogg\"]")[0];
+
+				audioSetTimeEvents(audio0, {
+					"5": [null, "showSubtitle", ["Receiving the government feeds now, sir.", 2500]],
+					"8.1": [null, "showSubtitle", ["Then", 800]],
+					"9.4": [null, "showSubtitle", ["by all means,", 1000]],
+					"11": [null, "showSubtitle", ["let there be", 1000]],
+					"12.5": [null, "showSubtitle", ["life.", 500]],
+					"13.2": [samaritan, "showMessageBox", ["TOTAL ACCESS ACHIEVED"]],
+					"13.5": function() {
+						document.title = "Samaritan 1.0";
+					},
+					"15": [samaritan, "showMessageBox", ["TOTAL ACCESS ACHIEVED", "ASSIMILATING DATA"]],
+					"24": [samaritan, "showMessageBox", ["TOTAL ACCESS ACHIEVED", "DATA ACQUISITION"]],
+					"25": function() {
+						audioStart(audio1, 0, 5);
+					}
+				});
+				audioSetTimeEvents(audio1, {
+					"11": [samaritan, "hideMessageBox"],
+					"14": [null, "showSubtitle", ["Good morning."]],
+					"17": [samaritan, "textAnimate", ["WHAT ARE YOUR COMMANDS ?"]],
+					"20": [null, "showSubtitle", ["I assure you, it's quite the other way around.", 2000]],
+					"23": [null, "showSubtitle", ["The question is, what,"]],
+					"25": [null, "showSubtitle", ["my dear Samaritan,"]],
+					"27": [null, "showSubtitle", ["are your commands for us?", 3000]],
+					"31": [samaritan, "enlarge", ["CALCULATING RESPONSE"]],
+					"40": function() {
+						$("#info").css("display", "");
+						setTimeout(function() {
+							$("#info").css("opacity", "1");
+						}, 100);
+					}
+				});
+				audioStart(audio0, 0, 5);
+
 				setTimeout(function() {
 					samaritan.textBlack("CONNECTION ESTABLISHED");
-					setTimeout(function() {
-						samaritan.showMessageBox("TOTAL ACCESS ACHIEVED");
-						setTimeout(function() {
-							samaritan.showMessageBox("TOTAL ACCESS ACHIEVED", "ASSIMILATING DATA");
-						}, 500);
-						setTimeout(function() {
-							samaritan.hideMessageBox();
-							queue_ending();
-						}, 8000);
-					}, 3000);
-				}, 2000);
+				}, 3000);
 			});
 		</script>
 	</head>
@@ -53,11 +69,13 @@
 				<div class="message-box-footer"></div>
 			</div>
 		</div>
-		<div class="subtitle" style="opacity: 0;"></div>
+		<div id="subtitle" style="opacity: 0;"></div>
 		<div id="info" style="display: none; opacity: 0;">
 			<p><a href="http://www.youtube.com/watch?v=dly3yjYnW6U&amp;t=4m23s" target="_blank">Person of Interest Season 3 Finale</a> </p>
 			<p style="font-size: 80%;"><a href="javascript: window.location.reload();">replay</a></p>
 		</div>
+		<audio src="static/audio/audio0.ogg" type="audio/ogg"></audio>
+		<audio src="static/audio/audio1.ogg" type="audio/ogg"></audio>
 	</body>
 
 	<!-- goncalomb.com -->

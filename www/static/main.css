@@ -147,6 +147,7 @@ body.color-invert {
 	font-family: 'Mono MMM 5', 'Nova Mono';
 	font-size: 15px;
 	text-align: center;
+	margin-top: 40px;
 }
 #info {
 	transition-duration: 1000ms;
