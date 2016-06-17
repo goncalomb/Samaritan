@@ -43,13 +43,29 @@
 					"27": [null, "showSubtitle", ["are your commands for us?", 3000]],
 					"31": [samaritan, "enlarge", ["CALCULATING RESPONSE"]],
 					"40": function() {
+						$("#subtitle").css("display", "none");
 						$("#info").css("display", "");
 						setTimeout(function() {
 							$("#info").css("opacity", "1");
 						}, 100);
+						setTimeout(playEasterEgg, 10000);
 					}
 				});
 				tryPlayAudio(audio0, 0, 5);
+
+				function playEasterEgg() {
+					samaritan.textAnimate("");
+					$("#info").css("opacity", "0");
+					setTimeout(function() {
+						$(document.body).removeClass("color-invert");
+					}, 2000);
+					setTimeout(function() {
+						samaritan.textAnimate("I WILL PROTECT YOU NOW");
+					}, 5000);
+					setTimeout(function() {
+						$("#info").css("opacity", "1").children(":first").remove();
+					}, 12000);
+				}
 
 				setTimeout(function() {
 					samaritan.textBlack("CONNECTION ESTABLISHED");
