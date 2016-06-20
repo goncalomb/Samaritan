@@ -1,5 +1,13 @@
 MIT License
 
+This license applies to all parts of this software except:
+
+ * The font "Mono MMM 5" (www/static/font/), that is available for free on
+   dafont.com (http://www.dafont.com/monommm-5.font).
+ * The two small audio snippets from the TV show (www/static/audio/).
+   The content of the audio files is property of their respective owners.
+   They are used in good faith.
+
 Copyright (c) 2014, 2016 Gonçalo Baltazar <me@goncalomb.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
