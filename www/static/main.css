@@ -7,7 +7,8 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	overflow-y: scroll;
 	margin: 0;
-	background-color: black;
+	color: white;
+	background-color: #060606;
 	transition-duration: 2000ms;
 	position: absolute;
 	top: 35%;
@@ -16,7 +17,8 @@ body {
 }
 
 body.color-invert {
-	background-color: #f2f2f2;
+	color: black;
+	background-color: #f9f9f9;
 }
 
 /* samaritan */
