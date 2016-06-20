@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2014, 2016 Gonçalo Baltazar <me@goncalomb.com>
+ * Samaritan is released under the terms of the MIT License,
+ * check the file LICENSE.txt.
+ */
+
 $(document).ready(function() {
 
 	// samaritan
