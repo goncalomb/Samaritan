@@ -23,8 +23,8 @@
 					return false;
 				});
 
-				var audio0 = $("audio[src=\"static/audio/audio0.ogg\"]")[0];
-				var audio1 = $("audio[src=\"static/audio/audio1.ogg\"]")[0];
+				var audio0 = $("#audio0")[0];
+				var audio1 = $("#audio1")[0];
 
 				audioSetTimeEvents(audio0, {
 					"5": [null, "showSubtitle", ["Receiving the government feeds now, sir.", 2500]],
@@ -100,8 +100,14 @@
 			<p style="font-size: 80%;"><a href="javascript: window.location.reload();">replay</a></p>
 			<p style="font-size: 80%;"><a href="https://github.com/goncalomb/Samaritan" target="_blank">Source Code on GitHub</a> | <a href="http://goncalomb.com/" target="_blank">goncalomb.com</a></p>
 		</div>
-		<audio src="static/audio/audio0.ogg" type="audio/ogg"></audio>
-		<audio src="static/audio/audio1.ogg" type="audio/ogg"></audio>
+		<audio id="audio0">
+			<source src="static/audio/audio0.ogg" type="audio/ogg">
+			<source src="static/audio/audio0.wav" type="audio/wav">
+		</audio>
+		<audio id="audio1">
+			<source src="static/audio/audio1.ogg" type="audio/ogg">
+			<source src="static/audio/audio1.wav" type="audio/wav">
+		</audio>
 	</body>
 
 </html>
