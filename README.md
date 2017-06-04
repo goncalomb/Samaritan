@@ -2,7 +2,7 @@
 
 A demo of the Samaritan UI from the TV show Person of Interest.
 
-**The live demo is available at: [samaritan.goncalomb.com](http://samaritan.goncalomb.com/).**
+**The live demo is available at: [samaritan.goncalomb.com](https://samaritan.goncalomb.com/).**
 
 It auto-plays the final scenes from the Season 3 finale.
 
