@@ -4,7 +4,3 @@ DirectorySlash On
 AcceptPathInfo Off
 RewriteEngine On
 Options -MultiViews -Indexes -Includes -ExecCGI +FollowSymLinks
-
-RewriteCond %{HTTP_HOST} =samaritan.goncalomb.com
-RewriteCond %{HTTPS} =off
-RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
